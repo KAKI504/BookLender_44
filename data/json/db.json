@@ -1,0 +1,52 @@
+{
+  "employees": [
+    {
+      "id": "1",
+      "name": "Иван Иванов",
+      "email": "ivan@mail.com",
+      "currentBooks": [],
+      "borrowHistory": [],
+      "role": "reader",
+      "registrationDate": "2024-02-24",
+      "maxBooks": 2
+    },
+    {
+      "id": "2",
+      "name": "Петр Петров",
+      "email": "petr@mail.com",
+      "currentBooks": [],
+      "borrowHistory": [],
+      "role": "reader",
+      "registrationDate": "2024-02-24",
+      "maxBooks": 2
+    }
+  ],
+  "books": [
+    {
+      "id": "1",
+      "title": "Война и мир",
+      "author": "Лев Толстой",
+      "image": "/images/book1.jpg",
+      "status": "available",
+      "isBorrowed": false,
+      "isbn": "978-5-699-12014-7",
+      "year": 1869,
+      "description": "Знаменитый роман-эпопея о событиях 1812 года",
+      "genre": "Роман",
+      "pageCount": 1225
+    },
+    {
+      "id": "2",
+      "title": "Преступление и наказание",
+      "author": "Федор Достоевский",
+      "image": "/images/book2.jpg",
+      "status": "available",
+      "isBorrowed": false,
+      "isbn": "978-5-699-18274-7",
+      "year": 1866,
+      "description": "Психологический роман о студенте Раскольникове",
+      "genre": "Роман",
+      "pageCount": 672
+    }
+  ]
+}
