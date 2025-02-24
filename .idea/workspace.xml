@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="3b2589ef-e494-45b8-808c-df4de552ae8e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/freemarker.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/gson_2_10_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/gson_2_10_1__2_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BookLender_44.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/bg/bg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/book-details.ftlh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/books.ftlh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/css/forms.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/css/freemarker.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/employee-profile.ftlh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/gson/gson-2.10.1.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/json/db.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/login.ftlh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lesson44/Book.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lesson44/BookDataModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lesson44/Employee.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lesson44/Lesson44Server.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lesson44/SampleDataModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/server/BasicServer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/server/ContentType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/server/ResponseCodes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/server/RouteHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/freemarker.jar" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 1
+}]]></component>
+  <component name="ProjectId" id="2tUFyAKEPAPJkmCOEdALZPXQuNs" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/kanat/Desktop/BookLender_44",
+    "onboarding.tips.debug.path": "/Users/kanat/Desktop/BookLender_44/src/Main.java"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/data/gson" />
+      <recent name="$PROJECT_DIR$/data" />
+      <recent name="$PROJECT_DIR$/data/json" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3b2589ef-e494-45b8-808c-df4de552ae8e" name="Changes" comment="" />
+      <created>1740398997523</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1740398997523</updated>
+    </task>
+    <servers />
+  </component>
+</project>
