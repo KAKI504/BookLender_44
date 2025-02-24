@@ -15,8 +15,8 @@ public abstract class BasicServer {
 
     private final HttpServer server;
     // путь к каталогу с файлами, которые будет отдавать сервер по запросам клиентов
-    // Измените эту строку
-    private final String dataDir = "java23_Booklander/data";
+    // Исправлено здесь: изменен путь с java23_Booklander/data на data
+    private final String dataDir = "data";
     private Map<String, RouteHandler> routes = new HashMap<>();
 
     protected BasicServer(String host, int port) throws IOException {

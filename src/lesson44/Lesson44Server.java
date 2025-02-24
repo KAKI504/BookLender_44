@@ -6,7 +6,6 @@ import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import freemarker.template.TemplateExceptionHandler;
 
-
 import java.io.*;
 import server.BasicServer;
 import server.ContentType;
@@ -129,7 +128,8 @@ public class Lesson44Server extends BasicServer {
                 data.put("success", "Книга успешно возвращена");
             }
 
-            renderTemplate(exchange, "profile.ftlh", data);
+            // Исправлено здесь: используем employee-profile.ftlh вместо profile.ftlh
+            renderTemplate(exchange, "employee-profile.ftlh", data);
         } catch (Exception e) {
             e.printStackTrace();
             respond404(exchange);
