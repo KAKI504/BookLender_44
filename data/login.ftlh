@@ -1,28 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Вход в систему</title>
-    <link rel="stylesheet" href="css/forms.css">
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-    <main>
-        <form action="/login" method="post">
-            <fieldset>
-                <div class="legend">
-                    <p>Вход в систему</p>
+    <nav class="navigation">
+        <div class="container">
+            <div class="nav-links">
+                <a href="/books">Книги</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="form-container">
+            <h1>Вход в систему</h1>
+            <form action="/login" method="post">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required autofocus
+                           placeholder="Введите ваш email">
                 </div>
-                <div class="form-element">
-                    <input type="email" name="email" placeholder="ваш адрес электронной почты" required autofocus>
+                <div class="form-group">
+                    <label for="password">Пароль</label>
+                    <input type="password" id="password" name="password" required
+                           placeholder="Введите ваш пароль">
                 </div>
-                <div class="form-element">
-                    <input type="password" name="password" placeholder="ваш пароль" required>
-                </div>
-                <div class="form-element">
-                    <button class="register-button" type="submit">ВОЙТИ</button>
-                </div>
-            </fieldset>
-        </form>
-    </main>
+                <button type="submit" class="button">Войти</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

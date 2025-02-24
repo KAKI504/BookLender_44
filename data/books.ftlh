@@ -1,41 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Библиотека</title>
-    <link rel="stylesheet" href="css/freemarker.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Библиотека - Список книг</title>
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-    <div class="container">
-        <nav class="navigation">
-            <#if employee??>
-                <a href="/profile">Мой профиль</a> |
-            <#else>
-                <a href="/login">Войти</a> |
-            </#if>
-            <a href="/books">Книги</a>
-        </nav>
-
-        <h1>Библиотека</h1>
-        <div class="table flex flex-col">
-            <div class="header flex">
-                <div class="column">ID</div>
-                <div class="column">Название</div>
-                <div class="column">Автор</div>
-                <div class="column">Статус</div>
-                <div class="column">Действия</div>
+    <nav class="navigation">
+        <div class="container">
+            <div class="nav-links">
+                <#if employee??>
+                    <a href="/profile">Мой профиль</a>
+                <#else>
+                    <a href="/login">Войти</a>
+                </#if>
+                <a href="/books">Книги</a>
             </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Библиотека</h1>
+
+        <#if error??>
+            <div class="notification notification-error">
+                ${error}
+            </div>
+        </#if>
+
+        <#if success??>
+            <div class="notification notification-success">
+                ${success}
+            </div>
+        </#if>
+
+        <div class="books-grid">
             <#list books as book>
-                <div class="row ${book?item_parity} flex">
-                    <div class="column">${book.id}</div>
-                    <div class="column">
-                        <a href="/book/${book.id}">${book.title}</a>
-                    </div>
-                    <div class="column">${book.author}</div>
-                    <div class="column">${book.status}</div>
-                    <div class="column">
+                <div class="book-card">
+                    <img src="${book.image}" alt="${book.title}" class="book-image">
+                    <div class="book-info">
+                        <h3 class="book-title">
+                            <a href="/book/${book.id}">${book.title}</a>
+                        </h3>
+                        <p class="book-author">${book.author}</p>
+                        <span class="book-status status-${book.status}">
+                            ${book.status?capitalize}
+                        </span>
                         <#if employee?? && !book.borrowed>
-                            <a href="/borrow-book/${book.id}">Взять книгу</a>
+                            <a href="/borrow-book/${book.id}" class="button">Взять книгу</a>
                         </#if>
                     </div>
                 </div>
