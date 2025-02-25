@@ -23,19 +23,47 @@ public class Lesson44Server extends BasicServer {
     public Lesson44Server(String host, int port) throws IOException {
         super(host, port);
 
+        System.out.println("Регистрирую маршруты:");
+
         registerGet("/", this::handleRoot);
+        System.out.println("- Зарегистрирован маршрут: /");
+
         registerGet("/books", this::handleBooks);
-        registerGet("/book/\\d+", this::handleBookDetails);
+        System.out.println("- Зарегистрирован маршрут: /books");
+
+        registerGet("/book/1", this::handleBookDetails);
+        System.out.println("- Зарегистрирован конкретный маршрут: /book/1");
+
+        registerGet("/book/2", this::handleBookDetails);
+        System.out.println("- Зарегистрирован конкретный маршрут: /book/2");
+
         registerGet("/login", this::handleLoginPage);
+        System.out.println("- Зарегистрирован маршрут: /login");
+
         registerGet("/profile", this::handleProfile);
-        registerGet("/borrow-book/\\d+", this::handleBorrowBook);
-        registerGet("/return-book/\\d+", this::handleReturnBook);
+        System.out.println("- Зарегистрирован маршрут: /profile");
+
+        registerGet("/borrow-book/1", this::handleBorrowBook);
+        System.out.println("- Зарегистрирован конкретный маршрут: /borrow-book/1");
+
+        registerGet("/borrow-book/2", this::handleBorrowBook);
+        System.out.println("- Зарегистрирован конкретный маршрут: /borrow-book/2");
+
+        registerGet("/return-book/1", this::handleReturnBook);
+        System.out.println("- Зарегистрирован конкретный маршрут: /return-book/1");
+
+        registerGet("/return-book/2", this::handleReturnBook);
+        System.out.println("- Зарегистрирован конкретный маршрут: /return-book/2");
+
         registerPost("/login", this::handleLogin);
+        System.out.println("- Зарегистрирован маршрут: POST /login");
 
         registerFileHandler(".css", ContentType.TEXT_CSS);
         registerFileHandler(".html", ContentType.TEXT_HTML);
         registerFileHandler(".jpg", ContentType.IMAGE_JPEG);
         registerFileHandler(".png", ContentType.IMAGE_PNG);
+        System.out.println("- Зарегистрированы обработчики файлов: .css, .html, .jpg, .png");
+        checkTemplateFiles();
     }
 
     private void handleRoot(HttpExchange exchange) {
@@ -64,7 +92,6 @@ public class Lesson44Server extends BasicServer {
             redirect303(exchange, "/login");
 
         } catch (IOException e) {
-            e.printStackTrace();
             redirect303(exchange, "/login");
         }
     }
@@ -98,12 +125,13 @@ public class Lesson44Server extends BasicServer {
                 data.put("error", "Вы не можете взять больше книг");
             } else {
                 currentEmployee.borrowBook(book);
+                bookDataModel.updateEmployee(currentEmployee);
+                bookDataModel.updateBook(book);
                 data.put("success", "Книга успешно взята");
             }
 
             renderTemplate(exchange, "books.ftlh", data);
         } catch (Exception e) {
-            e.printStackTrace();
             respond404(exchange);
         }
     }
@@ -123,15 +151,19 @@ public class Lesson44Server extends BasicServer {
 
             if (book == null) {
                 data.put("error", "Книга не найдена");
+            } else if (!book.isBorrowed()) {
+                data.put("error", "Книга не была взята");
+            } else if (!currentEmployee.hasBorrowedBook(book)) {
+                data.put("error", "Вы не брали эту книгу");
             } else {
                 currentEmployee.returnBook(book);
+                bookDataModel.updateEmployee(currentEmployee);
+                bookDataModel.updateBook(book);
                 data.put("success", "Книга успешно возвращена");
             }
 
-            // Исправлено здесь: используем employee-profile.ftlh вместо profile.ftlh
-            renderTemplate(exchange, "employee-profile.ftlh", data);
+            renderTemplate(exchange, "books.ftlh", data);
         } catch (Exception e) {
-            e.printStackTrace();
             respond404(exchange);
         }
     }
@@ -149,7 +181,6 @@ public class Lesson44Server extends BasicServer {
         try {
             String path = exchange.getRequestURI().getPath();
             String id = path.substring(path.lastIndexOf("/") + 1);
-            System.out.println("Book ID: " + id);
             Book book = bookDataModel.getBookById(id);
 
             if (book == null) {
@@ -159,9 +190,9 @@ public class Lesson44Server extends BasicServer {
 
             Map<String, Object> data = createDataModel();
             data.put("book", book);
+
             renderTemplate(exchange, "book-details.ftlh", data);
         } catch (Exception e) {
-            e.printStackTrace();
             respond404(exchange);
         }
     }
@@ -185,7 +216,6 @@ public class Lesson44Server extends BasicServer {
                     String value = java.net.URLDecoder.decode(keyValue[1], "UTF-8");
                     result.put(key, value);
                 } catch (UnsupportedEncodingException e) {
-                    e.printStackTrace();
                 }
             }
         }
@@ -231,7 +261,6 @@ public class Lesson44Server extends BasicServer {
                 sendByteData(exchange, ResponseCodes.OK, ContentType.TEXT_HTML, data);
             }
         } catch (IOException | TemplateException e) {
-            e.printStackTrace();
             respond404(exchange);
         }
     }
@@ -254,7 +283,24 @@ public class Lesson44Server extends BasicServer {
             exchange.sendResponseHeaders(303, 0);
             exchange.getResponseBody().close();
         } catch (IOException e) {
-            e.printStackTrace();
+        }
+    }
+
+    private void checkTemplateFiles() {
+        String dataDir = new File("data").getAbsolutePath();
+        System.out.println("Проверяю наличие шаблонов в директории: " + dataDir);
+
+        String[] templates = {
+                "login.ftlh",
+                "books.ftlh",
+                "book-details.ftlh",
+                "employee-profile.ftlh"
+        };
+
+        for (String template : templates) {
+            File file = new File(dataDir, template);
+            System.out.println("Шаблон " + template + ": " +
+                    (file.exists() ? "СУЩЕСТВУЕТ" : "НЕ СУЩЕСТВУЕТ"));
         }
     }
 }
