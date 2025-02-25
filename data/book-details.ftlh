@@ -25,7 +25,8 @@
             <h1>${book.title}</h1>
             <div class="book-details">
                 <div class="book-cover">
-                    <img src="${book.image}" alt="${book.title}" style="max-width: 300px;">
+                    <!-- Попробуйте прямой абсолютный путь -->
+                    <img src="/images/book${book.id}.jpg" alt="${book.title}" style="max-width: 300px;">
                 </div>
                 <div class="book-info">
                     <p><strong>Автор:</strong> ${book.author}</p>

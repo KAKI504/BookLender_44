@@ -38,7 +38,8 @@
         <div class="books-grid">
             <#list books as book>
                 <div class="book-card">
-                    <img src="${book.image}" alt="${book.title}" class="book-image">
+                    <!-- Попробуйте прямой абсолютный путь -->
+                    <img src="/images/book${book.id}.jpg" alt="${book.title}" class="book-image">
                     <div class="book-info">
                         <h3 class="book-title">
                             <a href="/book/${book.id}">${book.title}</a>

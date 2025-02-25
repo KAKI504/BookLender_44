@@ -1,5 +1,5 @@
-html,
-body {
+/* Основные стили */
+html, body {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     margin: 0;
     padding: 0;
@@ -7,11 +7,280 @@ body {
 
 body {
     background: url("../bg/bg.png") 0 0 repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
+/* Контейнер и навигация */
+.container {
+    width: 80%;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.navigation {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.85);
+    padding: 15px 0;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.nav-links {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #ff8c38;
+}
+
+/* Формы и уведомления */
+.form-container {
+    width: 400px;
+    max-width: 100%;
+    margin: 30px auto;
+    padding: 30px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.button {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #ffca3a;
+    color: #333;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 5px;
+}
+
+.button:hover {
+    background-color: #ffd966;
+}
+
+.notification {
+    width: 80%;
+    margin: 20px auto;
+    padding: 15px;
+    border-radius: 5px;
+    text-align: center;
+    display: none;
+}
+
+.notification-success {
+    background-color: rgba(46, 204, 113, 0.2);
+    border: 1px solid #2ecc71;
+    color: #27ae60;
+}
+
+.notification-error {
+    background-color: rgba(231, 76, 60, 0.2);
+    border: 1px solid #e74c3c;
+    color: #c0392b;
+}
+
+/* Заголовки */
+h1, h2, h3 {
+    text-align: center;
+}
+
+h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+h2 {
+    font-size: 24px;
+    margin: 30px 0 15px;
+    color: #444;
+}
+
+/* Книги и карточки */
+.books-section {
+    margin: 20px 0;
+    width: 100%;
+}
+
+.books-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin: 20px 0;
+}
+
+.book-card {
+    width: 300px;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    transition: transform 0.3s;
+}
+
+.book-card:hover {
+    transform: translateY(-5px);
+}
+
+.book-image {
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.book-info {
+    width: 100%;
+    text-align: center;
+}
+
+.book-title {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.book-title a {
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.book-title a:hover {
+    color: #ff8c38;
+}
+
+.book-author {
+    color: #ff8c38;
+    margin-bottom: 10px;
+}
+
+.book-status {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 14px;
+    margin: 10px 0;
+}
+
+.status-available {
+    background-color: rgba(46, 204, 113, 0.2);
+    color: #27ae60;
+}
+
+.status-borrowed {
+    background-color: rgba(231, 76, 60, 0.2);
+    color: #c0392b;
+}
+
+/* Детали книги */
+.book-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background-color: white;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+}
+
+.book-cover {
+    margin-bottom: 20px;
+}
+
+.book-cover img {
+    max-width: 250px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.book-info p {
+    margin: 10px 0;
+    font-size: 16px;
+    text-align: center;
+}
+
+.book-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+/* Профиль */
+.profile-info {
+    width: 100%;
+    background-color: white;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+    text-align: center;
+}
+
+/* Особый стиль для мобильных устройств */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+    }
+
+    .book-details {
+        padding: 15px;
+    }
+
+    .book-card {
+        width: 100%;
+    }
+}
+
+/* Поля формы */
 form {
-    width: 50%;
-    max-width: 500px;
+    width: 100%;
+    max-width: 400px;
     min-width: 200px;
     margin: 0 auto;
 }
@@ -21,6 +290,7 @@ fieldset {
     padding: 0;
     margin: 0;
     margin-top: 20px;
+    text-align: center;
 }
 
 .legend {
