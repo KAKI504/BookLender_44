@@ -14,8 +14,6 @@ import java.util.Map;
 public abstract class BasicServer {
 
     private final HttpServer server;
-    // путь к каталогу с файлами, которые будет отдавать сервер по запросам клиентов
-    // Исправлено здесь: изменен путь с java23_Booklander/data на data
     private final String dataDir = "data";
     private Map<String, RouteHandler> routes = new HashMap<>();
 
@@ -23,6 +21,7 @@ public abstract class BasicServer {
         server = createServer(host, port);
         registerCommonHandlers();
     }
+
     protected final void registerPost(String route, RouteHandler handler) {
         getRoutes().put("POST " + route, handler);
     }
@@ -53,19 +52,8 @@ public abstract class BasicServer {
     }
 
     private void registerCommonHandlers() {
-        // самый основной обработчик, который будет определять
-        // какие обработчики вызывать в дальнейшем
         server.createContext("/", this::handleIncomingServerRequests);
-
-        // специфичные обработчики, которые выполняют свои действия
-        // в зависимости от типа запроса
-
-        // обработчик для корневого запроса
-        // именно этот обработчик отвечает что отображать,
-        // когда пользователь запрашивает localhost:9889
         registerGet("/", exchange -> sendFile(exchange, makeFilePath("index.html"), ContentType.TEXT_HTML));
-
-        // эти обрабатывают запросы с указанными расширениями
         registerFileHandler(".css", ContentType.TEXT_CSS);
         registerFileHandler(".html", ContentType.TEXT_HTML);
         registerFileHandler(".jpg", ContentType.IMAGE_JPEG);
@@ -97,7 +85,6 @@ public abstract class BasicServer {
             byte[] data = Files.readAllBytes(pathToFile);
             sendByteData(exchange, ResponseCodes.OK, contentType, data);
         } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 
@@ -128,13 +115,40 @@ public abstract class BasicServer {
             byte[] data = "404 Not found".getBytes();
             sendByteData(exchange, ResponseCodes.NOT_FOUND, ContentType.TEXT_PLAIN, data);
         } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 
     private void handleIncomingServerRequests(HttpExchange exchange) {
-        RouteHandler route = getRoutes().getOrDefault(makeKey(exchange), this::respond404);
-        route.handle(exchange);
+        String requestKey = makeKey(exchange);
+        RouteHandler route = getRoutes().get(requestKey);
+
+        if (route == null) {
+            String method = exchange.getRequestMethod();
+            String path = exchange.getRequestURI().getPath();
+
+            for (Map.Entry<String, RouteHandler> entry : getRoutes().entrySet()) {
+                String key = entry.getKey();
+
+                if (key.startsWith(method + " ")) {
+                    String pattern = key.substring((method + " ").length());
+
+                    if (pattern.contains("\\d+")) {
+                        String regex = "^" + pattern.replace("\\d+", "(\\d+)") + "$";
+
+                        if (path.matches(regex)) {
+                            route = entry.getValue();
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        if (route != null) {
+            route.handle(exchange);
+        } else {
+            respond404(exchange);
+        }
     }
 
     public final void start() {
