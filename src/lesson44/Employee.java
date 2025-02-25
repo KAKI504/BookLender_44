@@ -76,6 +76,10 @@ public class Employee {
         }
     }
 
+    public boolean hasBorrowedBook(Book book) {
+        return currentBooks.contains(book);
+    }
+
     public int getCurrentBooksCount() {
         return currentBooks.size();
     }
