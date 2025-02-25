@@ -1,6 +1,5 @@
 package lesson44;
 
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -40,7 +39,6 @@ public class BookDataModel {
             Map<String, Object> data = gson.fromJson(reader, type);
 
             if (data == null) {
-                System.out.println("Предупреждение: файл данных пуст, использую тестовые данные");
                 initializeTestData();
                 return;
             }
@@ -62,11 +60,9 @@ public class BookDataModel {
                 validateData();
 
             } catch (Exception e) {
-                System.out.println("Ошибка при парсинге данных: " + e.getMessage());
                 initializeTestData();
             }
         } catch (IOException e) {
-            System.out.println("Ошибка при чтении файла: " + e.getMessage());
             initializeTestData();
         }
     }
@@ -109,7 +105,6 @@ public class BookDataModel {
             );
             gson.toJson(data, writer);
         } catch (IOException e) {
-            System.out.println("Ошибка при сохранении файла: " + e.getMessage());
         }
     }
 
@@ -118,11 +113,11 @@ public class BookDataModel {
     }
 
     public Book getBookById(String id) {
-        System.out.println("Searching book with ID: " + id);
-        return books.stream()
+        Book found = books.stream()
                 .filter(book -> book.getId().equals(id))
                 .findFirst()
                 .orElse(null);
+        return found;
     }
 
     public List<Employee> getEmployees() {
@@ -142,7 +137,14 @@ public class BookDataModel {
     }
 
     public void updateBook(Book book) {
-        int index = books.indexOf(getBookById(book.getId()));
+        int index = -1;
+        for (int i = 0; i < books.size(); i++) {
+            if (books.get(i).getId().equals(book.getId())) {
+                index = i;
+                break;
+            }
+        }
+
         if (index != -1) {
             books.set(index, book);
             saveDataToJson();
@@ -155,7 +157,14 @@ public class BookDataModel {
     }
 
     public void updateEmployee(Employee employee) {
-        int index = employees.indexOf(findEmployeeByEmail(employee.getEmail()));
+        int index = -1;
+        for (int i = 0; i < employees.size(); i++) {
+            if (employees.get(i).getEmail().equals(employee.getEmail())) {
+                index = i;
+                break;
+            }
+        }
+
         if (index != -1) {
             employees.set(index, employee);
             saveDataToJson();
