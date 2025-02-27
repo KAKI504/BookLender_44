@@ -33,5 +33,8 @@
             </form>
         </div>
     </div>
+    <div class="form-footer">
+        <p>Нет аккаунта? <a href="/registration">Зарегистрироваться</a></p>
+    </div>
 </body>
 </html>
