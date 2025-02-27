@@ -17,8 +17,8 @@ import java.util.Map;
 
 public class Lesson44Server extends BasicServer {
     private final static Configuration freemarker = initFreeMarker();
-    private final BookDataModel bookDataModel = new BookDataModel();
-    private Employee currentEmployee = null;
+    protected final BookDataModel bookDataModel = new BookDataModel();
+    protected Employee currentEmployee = null;
 
     public Lesson44Server(String host, int port) throws IOException {
         super(host, port);
@@ -66,15 +66,15 @@ public class Lesson44Server extends BasicServer {
         checkTemplateFiles();
     }
 
-    private void handleRoot(HttpExchange exchange) {
+    protected void handleRoot(HttpExchange exchange) {
         renderTemplate(exchange, "login.ftlh", createDataModel());
     }
 
-    private void handleLoginPage(HttpExchange exchange) {
+    protected void handleLoginPage(HttpExchange exchange) {
         renderTemplate(exchange, "login.ftlh", createDataModel());
     }
 
-    private void handleLogin(HttpExchange exchange) {
+    protected void handleLogin(HttpExchange exchange) {
         try {
             String raw = new String(exchange.getRequestBody().readAllBytes());
             Map<String, String> formData = parseFormData(raw);
@@ -96,7 +96,7 @@ public class Lesson44Server extends BasicServer {
         }
     }
 
-    private void handleProfile(HttpExchange exchange) {
+    protected void handleProfile(HttpExchange exchange) {
         if (currentEmployee == null) {
             redirect303(exchange, "/login");
             return;
@@ -104,7 +104,7 @@ public class Lesson44Server extends BasicServer {
         renderTemplate(exchange, "employee-profile.ftlh", createDataModel());
     }
 
-    private void handleBorrowBook(HttpExchange exchange) {
+    protected void handleBorrowBook(HttpExchange exchange) {
         if (currentEmployee == null) {
             redirect303(exchange, "/login");
             return;
@@ -136,7 +136,7 @@ public class Lesson44Server extends BasicServer {
         }
     }
 
-    private void handleReturnBook(HttpExchange exchange) {
+    protected void handleReturnBook(HttpExchange exchange) {
         if (currentEmployee == null) {
             redirect303(exchange, "/login");
             return;
@@ -168,11 +168,11 @@ public class Lesson44Server extends BasicServer {
         }
     }
 
-    private void handleBooks(HttpExchange exchange) {
+    protected void handleBooks(HttpExchange exchange) {
         renderTemplate(exchange, "books.ftlh", createDataModel());
     }
 
-    private void handleBookDetails(HttpExchange exchange) {
+    protected void handleBookDetails(HttpExchange exchange) {
         if (currentEmployee == null) {
             redirect303(exchange, "/login");
             return;
@@ -197,14 +197,14 @@ public class Lesson44Server extends BasicServer {
         }
     }
 
-    private Map<String, Object> createDataModel() {
+    protected Map<String, Object> createDataModel() {
         Map<String, Object> data = new HashMap<>();
         data.put("employee", currentEmployee);
         data.put("books", bookDataModel.getBooks());
         return data;
     }
 
-    private Map<String, String> parseFormData(String raw) {
+    protected Map<String, String> parseFormData(String raw) {
         Map<String, String> result = new HashMap<>();
         String[] pairs = raw.split("&");
 
@@ -277,7 +277,7 @@ public class Lesson44Server extends BasicServer {
         return data;
     }
 
-    private void redirect303(HttpExchange exchange, String path) {
+    protected void redirect303(HttpExchange exchange, String path) {
         try {
             exchange.getResponseHeaders().add("Location", path);
             exchange.sendResponseHeaders(303, 0);
@@ -286,7 +286,7 @@ public class Lesson44Server extends BasicServer {
         }
     }
 
-    private void checkTemplateFiles() {
+    protected void checkTemplateFiles() {
         String dataDir = new File("data").getAbsolutePath();
         System.out.println("Проверяю наличие шаблонов в директории: " + dataDir);
 
