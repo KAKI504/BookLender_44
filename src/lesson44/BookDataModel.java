@@ -28,8 +28,8 @@ public class BookDataModel {
 
         if (employees == null || employees.isEmpty()) {
             employees = new ArrayList<>();
-            employees.add(new Employee("1", "Иван Иванов", "ivan@mail.com"));
-            employees.add(new Employee("2", "Петр Петров", "petr@mail.com"));
+            employees.add(new Employee("1", "Иван Иванов", "ivan@mail.com","password1"));
+            employees.add(new Employee("2", "Петр Петров", "petr@mail.com","password1"));
         }
     }
 
@@ -91,8 +91,8 @@ public class BookDataModel {
         books.add(new Book("2", "Преступление и наказание", "Федор Достоевский", "/images/book2.jpg"));
 
         employees = new ArrayList<>();
-        employees.add(new Employee("1", "Иван Иванов", "ivan@mail.com"));
-        employees.add(new Employee("2", "Петр Петров", "petr@mail.com"));
+        employees.add(new Employee("1", "Иван Иванов", "ivan@mail.com", "password1"));
+        employees.add(new Employee("2", "Петр Петров", "petr@mail.com", "password2"));
 
         saveDataToJson();
     }
@@ -169,5 +169,23 @@ public class BookDataModel {
             employees.set(index, employee);
             saveDataToJson();
         }
+    }
+    public boolean employeeExistsByEmail(String email) {
+        return employees.stream()
+                .anyMatch(emp -> emp.getEmail().equals(email));
+    }
+    public Employee registerEmployee(String name, String email, String password) {
+        if (employeeExistsByEmail(email)) {
+            return null;
+        }
+
+        String id = String.valueOf(employees.size() + 1);
+
+        Employee newEmployee = new Employee(id, name, email, password);
+
+        employees.add(newEmployee);
+        saveDataToJson();
+
+        return newEmployee;
     }
 }
