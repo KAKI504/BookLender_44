@@ -7,13 +7,15 @@ public class Employee {
     private String id;
     private String name;
     private String email;
+    private String password;
     private List<Book> currentBooks;
     private List<Book> borrowHistory;
 
-    public Employee(String id, String name, String email) {
+    public Employee(String id, String name, String email, String password) {
         this.id = id;
         this.name = name;
         this.email = email;
+        this.password = password;
         this.currentBooks = new ArrayList<>();
         this.borrowHistory = new ArrayList<>();
     }
@@ -93,5 +95,12 @@ public class Employee {
                 ", currentBooks=" + currentBooks.size() +
                 ", borrowHistory=" + borrowHistory.size() +
                 '}';
+    }
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
