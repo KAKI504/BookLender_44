@@ -17,6 +17,11 @@
 
     <div class="container">
         <div class="form-container">
+         <#if error??>
+                    <div class="notification notification-error">
+                        ${error}
+                    </div>
+                </#if>
             <h1>Вход в систему</h1>
             <form action="/login" method="post">
                 <div class="form-group">
