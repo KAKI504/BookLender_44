@@ -67,7 +67,11 @@ public class Lesson44Server extends BasicServer {
     }
 
     protected void handleRoot(HttpExchange exchange) {
-        renderTemplate(exchange, "login.ftlh", createDataModel());
+        if (currentEmployee != null) {
+            redirect303(exchange, "/profile");
+        } else {
+            renderTemplate(exchange, "login.ftlh", createDataModel());
+        }
     }
 
     protected void handleLoginPage(HttpExchange exchange) {
@@ -83,13 +87,15 @@ public class Lesson44Server extends BasicServer {
             String password = formData.get("password");
 
             Employee employee = bookDataModel.findEmployeeByEmail(email);
-            if (employee != null && password != null) {
+            if (employee != null && password != null && password.equals(employee.getPassword())) {
                 currentEmployee = employee;
-                redirect303(exchange, "/books");
+                redirect303(exchange, "/profile");
                 return;
             }
 
-            redirect303(exchange, "/login");
+            Map<String, Object> data = createDataModel();
+            data.put("error", "Пользователь не существует или неверный пароль");
+            renderTemplate(exchange, "login.ftlh", data);
 
         } catch (IOException e) {
             redirect303(exchange, "/login");
