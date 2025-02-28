@@ -30,10 +30,6 @@ public class Book {
         return author;
     }
 
-    public String getImage() {
-        return image;
-    }
-
     public String getStatus() {
         return status;
     }
@@ -44,34 +40,6 @@ public class Book {
 
     public String getBorrowedBy() {
         return borrowedBy;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public void setBorrowed(boolean borrowed) {
-        isBorrowed = borrowed;
-    }
-
-    public void setBorrowedBy(String borrowedBy) {
-        this.borrowedBy = borrowedBy;
     }
 
     public void borrowBook(String employeeName) {

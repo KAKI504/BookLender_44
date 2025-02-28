@@ -32,34 +32,6 @@ public class Employee {
         return email;
     }
 
-    public List<Book> getCurrentBooks() {
-        return currentBooks;
-    }
-
-    public List<Book> getBorrowHistory() {
-        return borrowHistory;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setCurrentBooks(List<Book> currentBooks) {
-        this.currentBooks = currentBooks;
-    }
-
-    public void setBorrowHistory(List<Book> borrowHistory) {
-        this.borrowHistory = borrowHistory;
-    }
-
     public boolean canBorrowBooks() {
         return currentBooks.size() < 2;
     }
