@@ -74,7 +74,7 @@ public class Lesson45Server extends Lesson44Server {
             Employee employee = bookDataModel.findEmployeeByEmail(email);
             if (employee != null && password != null && password.equals(employee.getPassword())) {
                 currentEmployee = employee;
-                redirect303(exchange, "/books");
+                redirect303(exchange, "/profile");
                 return;
             }
 

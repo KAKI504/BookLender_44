@@ -31,11 +31,16 @@ public class Lesson44Server extends BasicServer {
         registerGet("/books", this::handleBooks);
         System.out.println("- Зарегистрирован маршрут: /books");
 
-        registerGet("/book/1", this::handleBookDetails);
-        System.out.println("- Зарегистрирован конкретный маршрут: /book/1");
+        for (int i = 1; i <= 6; i++) {
+            registerGet("/book/" + i, this::handleBookDetails);
+            System.out.println("- Зарегистрирован конкретный маршрут: /book/" + i);
 
-        registerGet("/book/2", this::handleBookDetails);
-        System.out.println("- Зарегистрирован конкретный маршрут: /book/2");
+            registerGet("/borrow-book/" + i, this::handleBorrowBook);
+            System.out.println("- Зарегистрирован конкретный маршрут: /borrow-book/" + i);
+
+            registerGet("/return-book/" + i, this::handleReturnBook);
+            System.out.println("- Зарегистрирован конкретный маршрут: /return-book/" + i);
+        }
 
         registerGet("/login", this::handleLoginPage);
         System.out.println("- Зарегистрирован маршрут: /login");
@@ -43,27 +48,17 @@ public class Lesson44Server extends BasicServer {
         registerGet("/profile", this::handleProfile);
         System.out.println("- Зарегистрирован маршрут: /profile");
 
-        registerGet("/borrow-book/1", this::handleBorrowBook);
-        System.out.println("- Зарегистрирован конкретный маршрут: /borrow-book/1");
-
-        registerGet("/borrow-book/2", this::handleBorrowBook);
-        System.out.println("- Зарегистрирован конкретный маршрут: /borrow-book/2");
-
-        registerGet("/return-book/1", this::handleReturnBook);
-        System.out.println("- Зарегистрирован конкретный маршрут: /return-book/1");
-
-        registerGet("/return-book/2", this::handleReturnBook);
-        System.out.println("- Зарегистрирован конкретный маршрут: /return-book/2");
-
         registerPost("/login", this::handleLogin);
         System.out.println("- Зарегистрирован маршрут: POST /login");
 
         registerFileHandler(".css", ContentType.TEXT_CSS);
         registerFileHandler(".html", ContentType.TEXT_HTML);
         registerFileHandler(".jpg", ContentType.IMAGE_JPEG);
+        registerFileHandler(".jpeg", ContentType.IMAGE_JPEG);
         registerFileHandler(".png", ContentType.IMAGE_PNG);
-        System.out.println("- Зарегистрированы обработчики файлов: .css, .html, .jpg, .png");
+        System.out.println("- Зарегистрированы обработчики файлов: .css, .html, .jpg, .jpeg, .png");
         checkTemplateFiles();
+        registerStaticResourcesHandler();
     }
 
     protected void handleRoot(HttpExchange exchange) {
@@ -140,6 +135,7 @@ public class Lesson44Server extends BasicServer {
         } catch (Exception e) {
             respond404(exchange);
         }
+
     }
 
     protected void handleReturnBook(HttpExchange exchange) {
@@ -147,7 +143,6 @@ public class Lesson44Server extends BasicServer {
             redirect303(exchange, "/login");
             return;
         }
-
         try {
             String path = exchange.getRequestURI().getPath();
             String bookId = path.substring(path.lastIndexOf("/") + 1);
@@ -156,20 +151,23 @@ public class Lesson44Server extends BasicServer {
             Map<String, Object> data = createDataModel();
 
             if (book == null) {
-                data.put("error", "Книга не найдена");
+                data.put("error", "Книга не найдена (ID: " + bookId + ")");
             } else if (!book.isBorrowed()) {
-                data.put("error", "Книга не была взята");
+                data.put("error", "Книга не была взята (Статус: " + book.getStatus() + ")");
             } else if (!currentEmployee.hasBorrowedBook(book)) {
-                data.put("error", "Вы не брали эту книгу");
+                data.put("error", "Вы не брали эту книгу. Взята пользователем: " + book.getBorrowedBy());
             } else {
+                System.out.println("Возврат книги: " + book.getTitle() + " от пользователя " + currentEmployee.getName());
+
                 currentEmployee.returnBook(book);
                 bookDataModel.updateEmployee(currentEmployee);
                 bookDataModel.updateBook(book);
-                data.put("success", "Книга успешно возвращена");
+                data.put("success", "Книга успешно возвращена: " + book.getTitle());
             }
 
             renderTemplate(exchange, "books.ftlh", data);
         } catch (Exception e) {
+            e.printStackTrace();
             respond404(exchange);
         }
     }

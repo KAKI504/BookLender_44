@@ -57,6 +57,7 @@ public abstract class BasicServer {
         registerFileHandler(".css", ContentType.TEXT_CSS);
         registerFileHandler(".html", ContentType.TEXT_HTML);
         registerFileHandler(".jpg", ContentType.IMAGE_JPEG);
+        registerFileHandler(".jpeg", ContentType.IMAGE_JPEG);
         registerFileHandler(".png", ContentType.IMAGE_PNG);
     }
 
@@ -153,5 +154,27 @@ public abstract class BasicServer {
 
     public final void start() {
         server.start();
+    }
+
+    protected void registerStaticResourcesHandler() {
+        server.createContext("/data/images/", exchange -> {
+            try {
+                String requestPath = exchange.getRequestURI().getPath();
+                String filePath = requestPath.substring("/data/".length());
+
+                ContentType contentType = ContentType.TEXT_PLAIN;
+                if (filePath.endsWith(".jpg") || filePath.endsWith(".jpeg")) {
+                    contentType = ContentType.IMAGE_JPEG;
+                } else if (filePath.endsWith(".png")) {
+                    contentType = ContentType.IMAGE_PNG;
+                } else if (filePath.endsWith(".css")) {
+                    contentType = ContentType.TEXT_CSS;
+                }
+
+                sendFile(exchange, makeFilePath(filePath), contentType);
+            } catch (Exception e) {
+                respond404(exchange);
+            }
+        });
     }
 }

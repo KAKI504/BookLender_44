@@ -24,12 +24,16 @@ public class BookDataModel {
             books = new ArrayList<>();
             books.add(new Book("1", "Война и мир", "Лев Толстой", "/images/book1.jpg"));
             books.add(new Book("2", "Преступление и наказание", "Федор Достоевский", "/images/book2.jpg"));
+            books.add(new Book("3", "Кладбище домашних животных", "Стивен Кинг", "/images/book3.jpeg"));
+            books.add(new Book("4", "Убийство в Восточном экспрессе", "Агата Кристи", "/images/book4.jpeg"));
+            books.add(new Book("5", "Вилла 'Белый конь'", "Агата Кристи", "/images/book5.jpeg"));
+            books.add(new Book("6", "Десять негритят", "Агата Кристи", "/images/book6.jpeg"));
         }
 
         if (employees == null || employees.isEmpty()) {
             employees = new ArrayList<>();
             employees.add(new Employee("1", "Иван Иванов", "ivan@mail.com","password1"));
-            employees.add(new Employee("2", "Петр Петров", "petr@mail.com","password1"));
+            employees.add(new Employee("2", "Петр Петров", "petr@mail.com","password2"));
         }
     }
 
@@ -89,6 +93,10 @@ public class BookDataModel {
         books = new ArrayList<>();
         books.add(new Book("1", "Война и мир", "Лев Толстой", "/images/book1.jpg"));
         books.add(new Book("2", "Преступление и наказание", "Федор Достоевский", "/images/book2.jpg"));
+        books.add(new Book("3", "Кладбище домашних животных", "Стивен Кинг", "/images/book3.jpeg"));
+        books.add(new Book("4", "Убийство в Восточном экспрессе", "Агата Кристи", "/images/book4.jpeg"));
+        books.add(new Book("5", "Вилла 'Белый конь'", "Агата Кристи", "/images/book5.jpeg"));
+        books.add(new Book("6", "Десять негритят", "Агата Кристи", "/images/book6.jpeg"));
 
         employees = new ArrayList<>();
         employees.add(new Employee("1", "Иван Иванов", "ivan@mail.com", "password1"));
