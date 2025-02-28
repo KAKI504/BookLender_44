@@ -25,8 +25,11 @@
             <h1>${book.title}</h1>
             <div class="book-details">
                 <div class="book-cover">
-                    <!-- Попробуйте прямой абсолютный путь -->
-                    <img src="/images/book${book.id}.jpg" alt="${book.title}" style="max-width: 300px;">
+                    <!-- Использование onerror для поддержки форматов jpg и jpeg -->
+                    <img src="/images/book${book.id}.jpg"
+                         alt="${book.title}"
+                         style="max-width: 300px;"
+                         onerror="this.onerror=null; this.src='/images/book${book.id}.jpeg';">
                 </div>
                 <div class="book-info">
                     <p><strong>Автор:</strong> ${book.author}</p>

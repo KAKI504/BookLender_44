@@ -22,24 +22,26 @@
 
     <div class="container">
         <h1>Библиотека</h1>
+           <#if error??>
+                <div class="notification notification-error">
+                    ${error}
+                </div>
+            </#if>
 
-        <#if error??>
-            <div class="notification notification-error">
-                ${error}
-            </div>
-        </#if>
-
-        <#if success??>
-            <div class="notification notification-success">
-                ${success}
-            </div>
-        </#if>
+            <#if success??>
+                <div class="notification notification-success">
+                    ${success}
+                </div>
+            </#if>
 
         <div class="books-grid">
             <#list books as book>
                 <div class="book-card">
-                    <!-- Попробуйте прямой абсолютный путь -->
-                    <img src="/images/book${book.id}.jpg" alt="${book.title}" class="book-image">
+                    <!-- Использование onerror для поддержки форматов jpg и jpeg -->
+                    <img src="/images/book${book.id}.jpg"
+                         alt="${book.title}"
+                         class="book-image"
+                         onerror="this.onerror=null; this.src='/images/book${book.id}.jpeg';">
                     <div class="book-info">
                         <h3 class="book-title">
                             <a href="/book/${book.id}">${book.title}</a>

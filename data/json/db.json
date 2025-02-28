@@ -1,80 +1,75 @@
 {
+  "books": [
+    {
+      "id": "1",
+      "title": "Война и мир",
+      "author": "Лев Толстой",
+      "image": "/images/book1.jpg",
+      "status": "available",
+      "isBorrowed": false
+    },
+    {
+      "id": "2",
+      "title": "Преступление и наказание",
+      "author": "Федор Достоевский",
+      "image": "/images/book2.jpg",
+      "status": "available",
+      "isBorrowed": false
+    },
+    {
+      "id": "3",
+      "title": "Кладбище домашних животных",
+      "author": "Стивен Кинг",
+      "image": "/images/book3.jpeg",
+      "status": "available",
+      "isBorrowed": false
+    },
+    {
+      "id": "4",
+      "title": "Убийство в Восточном экспрессе",
+      "author": "Агата Кристи",
+      "image": "/images/book4.jpeg",
+      "status": "available",
+      "isBorrowed": false
+    },
+    {
+      "id": "5",
+      "title": "Вилла \u0027Белый конь\u0027",
+      "author": "Агата Кристи",
+      "image": "/book5.jpeg",
+      "status": "available",
+      "isBorrowed": false
+    },
+    {
+      "id": "6",
+      "title": "Десять негритят",
+      "author": "Агата Кристи",
+      "image": "/data/images/book6.jpeg",
+      "status": "available",
+      "isBorrowed": false
+    }
+  ],
   "employees": [
     {
       "id": "1",
       "name": "Иван Иванов",
       "email": "ivan@mail.com",
+      "password": "password1",
       "currentBooks": [],
       "borrowHistory": [
         {
-          "id": "1",
-          "title": "Война и мир",
-          "author": "Лев Толстой",
-          "image": "data/images/book1.jpg",
-          "status": "available",
-          "isBorrowed": false
-        },
-        {
           "id": "2",
           "title": "Преступление и наказание",
           "author": "Федор Достоевский",
-          "image": "data/images/book2.jpg",
+          "image": "/images/book2.jpg",
           "status": "available",
           "isBorrowed": false
         },
         {
-          "id": "2",
-          "title": "Преступление и наказание",
-          "author": "Федор Достоевский",
-          "image": "data/images/book2.jpg",
-          "status": "available",
-          "isBorrowed": false
-        },
-        {
-          "id": "1",
-          "title": "Война и мир",
-          "author": "Лев Толстой",
-          "image": "data/images/book1.jpg",
-          "status": "available",
-          "isBorrowed": false
-        },
-        {
-          "id": "1",
-          "title": "Война и мир",
-          "author": "Лев Толстой",
-          "image": "data/images/book1.jpg",
-          "status": "available",
-          "isBorrowed": false
-        },
-        {
-          "id": "1",
-          "title": "Война и мир",
-          "author": "Лев Толстой",
-          "image": "data/images/book1.jpg",
-          "status": "available",
-          "isBorrowed": false
-        },
-        {
-          "id": "2",
-          "title": "Преступление и наказание",
-          "author": "Федор Достоевский",
-          "image": "data/images/book2.jpg",
-          "status": "available",
-          "isBorrowed": false
-        },
-        {
-          "id": "2",
-          "title": "Преступление и наказание",
-          "author": "Федор Достоевский",
-          "image": "data/images/book2.jpg",
-          "status": "available",
-          "isBorrowed": false
-        },
-        {
-          "id": "1",
-          "title": "Война и мир",
-          "author": "Лев Толстой",
-          "image": "data/images/book1.jpg",
+          "id": "4",
+          "title": "Убийство в Восточном экспрессе",
+          "author": "Агата Кристи",
+          "image": "/images/book4.jpeg",
           "status": "available",
           "isBorrowed": false
         }
@@ -84,26 +79,9 @@
       "id": "2",
       "name": "Петр Петров",
       "email": "petr@mail.com",
+      "password": "password2",
       "currentBooks": [],
       "borrowHistory": []
-    }
-  ],
-  "books": [
-    {
-      "id": "1",
-      "title": "Война и мир",
-      "author": "Лев Толстой",
-      "image": "data/images/book1.jpg",
-      "status": "available",
-      "isBorrowed": false
-    },
-    {
-      "id": "2",
-      "title": "Преступление и наказание",
-      "author": "Федор Достоевский",
-      "image": "data/images/book2.jpg",
-      "status": "available",
-      "isBorrowed": false
     }
   ]
 }
