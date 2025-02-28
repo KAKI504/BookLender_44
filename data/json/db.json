@@ -5,9 +5,8 @@
       "title": "Война и мир",
       "author": "Лев Толстой",
       "image": "/images/book1.jpg",
-      "status": "borrowed",
-      "isBorrowed": true,
-      "borrowedBy": "Иван Иванов"
+      "status": "available",
+      "isBorrowed": false
     },
     {
       "id": "2",
@@ -35,7 +34,7 @@
     },
     {
       "id": "5",
-      "title": "Вилла \u0027Белый конь\u0027",
+      "title": "Вилла 'Белый конь'",
       "author": "Агата Кристи",
       "image": "/images/book5.jpeg",
       "status": "available",
@@ -56,68 +55,8 @@
       "name": "Иван Иванов",
       "email": "ivan@mail.com",
       "password": "password1",
-      "currentBooks": [
-        {
-          "id": "1",
-          "title": "Война и мир",
-          "author": "Лев Толстой",
-          "image": "/images/book1.jpg",
-          "status": "borrowed",
-          "isBorrowed": true,
-          "borrowedBy": "Иван Иванов"
-        }
-      ],
-      "borrowHistory": [
-        {
-          "id": "4",
-          "title": "Убийство в Восточном экспрессе",
-          "author": "Агата Кристи",
-          "image": "/images/book4.jpeg",
-          "status": "available",
-          "isBorrowed": false
-        },
-        {
-          "id": "3",
-          "title": "Кладбище домашних животных",
-          "author": "Стивен Кинг",
-          "image": "/images/book3.jpeg",
-          "status": "available",
-          "isBorrowed": false
-        },
-        {
-          "id": "4",
-          "title": "Убийство в Восточном экспрессе",
-          "author": "Агата Кристи",
-          "image": "/images/book4.jpeg",
-          "status": "available",
-          "isBorrowed": false
-        },
-        {
-          "id": "2",
-          "title": "Преступление и наказание",
-          "author": "Федор Достоевский",
-          "image": "/images/book2.jpg",
-          "status": "available",
-          "isBorrowed": false
-        },
-        {
-          "id": "1",
-          "title": "Война и мир",
-          "author": "Лев Толстой",
-          "image": "/images/book1.jpg",
-          "status": "borrowed",
-          "isBorrowed": true,
-          "borrowedBy": "Иван Иванов"
-        },
-        {
-          "id": "3",
-          "title": "Кладбище домашних животных",
-          "author": "Стивен Кинг",
-          "image": "/images/book3.jpeg",
-          "status": "available",
-          "isBorrowed": false
-        }
-      ]
+      "currentBooks": [],
+      "borrowHistory": []
     },
     {
       "id": "2",
@@ -126,31 +65,6 @@
       "password": "password2",
       "currentBooks": [],
       "borrowHistory": []
-    },
-    {
-      "id": "3",
-      "name": "nika",
-      "email": "nika@gmail.com",
-      "password": "nika123",
-      "currentBooks": [],
-      "borrowHistory": [
-        {
-          "id": "2",
-          "title": "Преступление и наказание",
-          "author": "Федор Достоевский",
-          "image": "/images/book2.jpg",
-          "status": "available",
-          "isBorrowed": false
-        },
-        {
-          "id": "3",
-          "title": "Кладбище домашних животных",
-          "author": "Стивен Кинг",
-          "image": "/images/book3.jpeg",
-          "status": "available",
-          "isBorrowed": false
-        }
-      ]
     }
   ]
 }
