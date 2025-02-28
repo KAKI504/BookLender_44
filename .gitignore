@@ -30,4 +30,10 @@ bin/
 
 # IntelliJ IDEA - дополнительные исключения
 .idea/
+*.iml# IntelliJ IDEA files
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
 *.iml
