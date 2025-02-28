@@ -5,8 +5,9 @@
       "title": "Война и мир",
       "author": "Лев Толстой",
       "image": "/images/book1.jpg",
-      "status": "available",
-      "isBorrowed": false
+      "status": "borrowed",
+      "isBorrowed": true,
+      "borrowedBy": "Иван Иванов"
     },
     {
       "id": "2",
@@ -36,7 +37,7 @@
       "id": "5",
       "title": "Вилла \u0027Белый конь\u0027",
       "author": "Агата Кристи",
-      "image": "/book5.jpeg",
+      "image": "/images/book5.jpeg",
       "status": "available",
       "isBorrowed": false
     },
@@ -44,7 +45,7 @@
       "id": "6",
       "title": "Десять негритят",
       "author": "Агата Кристи",
-      "image": "/data/images/book6.jpeg",
+      "image": "/images/book6.jpeg",
       "status": "available",
       "isBorrowed": false
     }
@@ -55,8 +56,42 @@
       "name": "Иван Иванов",
       "email": "ivan@mail.com",
       "password": "password1",
-      "currentBooks": [],
+      "currentBooks": [
+        {
+          "id": "1",
+          "title": "Война и мир",
+          "author": "Лев Толстой",
+          "image": "/images/book1.jpg",
+          "status": "borrowed",
+          "isBorrowed": true,
+          "borrowedBy": "Иван Иванов"
+        }
+      ],
       "borrowHistory": [
+        {
+          "id": "4",
+          "title": "Убийство в Восточном экспрессе",
+          "author": "Агата Кристи",
+          "image": "/images/book4.jpeg",
+          "status": "available",
+          "isBorrowed": false
+        },
+        {
+          "id": "3",
+          "title": "Кладбище домашних животных",
+          "author": "Стивен Кинг",
+          "image": "/images/book3.jpeg",
+          "status": "available",
+          "isBorrowed": false
+        },
+        {
+          "id": "4",
+          "title": "Убийство в Восточном экспрессе",
+          "author": "Агата Кристи",
+          "image": "/images/book4.jpeg",
+          "status": "available",
+          "isBorrowed": false
+        },
         {
           "id": "2",
           "title": "Преступление и наказание",
@@ -66,10 +101,19 @@
           "isBorrowed": false
         },
         {
-          "id": "4",
-          "title": "Убийство в Восточном экспрессе",
-          "author": "Агата Кристи",
-          "image": "/images/book4.jpeg",
+          "id": "1",
+          "title": "Война и мир",
+          "author": "Лев Толстой",
+          "image": "/images/book1.jpg",
+          "status": "borrowed",
+          "isBorrowed": true,
+          "borrowedBy": "Иван Иванов"
+        },
+        {
+          "id": "3",
+          "title": "Кладбище домашних животных",
+          "author": "Стивен Кинг",
+          "image": "/images/book3.jpeg",
           "status": "available",
           "isBorrowed": false
         }
@@ -82,6 +126,31 @@
       "password": "password2",
       "currentBooks": [],
       "borrowHistory": []
+    },
+    {
+      "id": "3",
+      "name": "nika",
+      "email": "nika@gmail.com",
+      "password": "nika123",
+      "currentBooks": [],
+      "borrowHistory": [
+        {
+          "id": "2",
+          "title": "Преступление и наказание",
+          "author": "Федор Достоевский",
+          "image": "/images/book2.jpg",
+          "status": "available",
+          "isBorrowed": false
+        },
+        {
+          "id": "3",
+          "title": "Кладбище домашних животных",
+          "author": "Стивен Кинг",
+          "image": "/images/book3.jpeg",
+          "status": "available",
+          "isBorrowed": false
+        }
+      ]
     }
   ]
 }
