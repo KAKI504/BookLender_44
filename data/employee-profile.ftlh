@@ -4,6 +4,33 @@
     <meta charset="UTF-8">
     <title>Профиль сотрудника - ${employee.name}</title>
     <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        .logout-button {
+            display: block;
+            margin: 30px auto;
+            padding: 10px 20px;
+            background-color: #f44336;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+            width: 200px;
+        }
+
+        .logout-button:hover {
+            background-color: #d32f2f;
+        }
+
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            padding: 20px;
+            border-top: 1px solid #eee;
+        }
+    </style>
 </head>
 <body>
     <nav class="navigation">
@@ -60,6 +87,10 @@
         <#else>
             <p style="text-align: center;">История пуста</p>
         </#if>
+
+        <div class="footer">
+            <a href="/logout" class="logout-button">Выйти из системы</a>
+        </div>
     </div>
 
     <script>
