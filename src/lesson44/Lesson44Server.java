@@ -26,30 +26,22 @@ public class Lesson44Server extends BasicServer {
         System.out.println("Регистрирую маршруты:");
 
         registerGet("/", this::handleRoot);
-        System.out.println("- Зарегистрирован маршрут: /");
 
         registerGet("/books", this::handleBooks);
-        System.out.println("- Зарегистрирован маршрут: /books");
 
         for (int i = 1; i <= 6; i++) {
             registerGet("/book/" + i, this::handleBookDetails);
-            System.out.println("- Зарегистрирован конкретный маршрут: /book/" + i);
 
             registerGet("/borrow-book/" + i, this::handleBorrowBook);
-            System.out.println("- Зарегистрирован конкретный маршрут: /borrow-book/" + i);
 
             registerGet("/return-book/" + i, this::handleReturnBook);
-            System.out.println("- Зарегистрирован конкретный маршрут: /return-book/" + i);
         }
 
         registerGet("/login", this::handleLoginPage);
-        System.out.println("- Зарегистрирован маршрут: /login");
 
         registerGet("/profile", this::handleProfile);
-        System.out.println("- Зарегистрирован маршрут: /profile");
 
         registerPost("/login", this::handleLogin);
-        System.out.println("- Зарегистрирован маршрут: POST /login");
 
         registerFileHandler(".css", ContentType.TEXT_CSS);
         registerFileHandler(".html", ContentType.TEXT_HTML);

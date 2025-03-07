@@ -196,4 +196,10 @@ public class BookDataModel {
 
         return newEmployee;
     }
+    public Employee getEmployeeById(String id) {
+        return employees.stream()
+                .filter(emp -> emp.getId().equals(id))
+                .findFirst()
+                .orElse(null);
+    }
 }

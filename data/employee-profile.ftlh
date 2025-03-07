@@ -38,6 +38,7 @@
             <div class="nav-links">
                 <a href="/profile">Мой профиль</a>
                 <a href="/books">Книги</a>
+                <a href="/employees">Сотрудники</a>
             </div>
         </div>
     </nav>

@@ -4,61 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Тестирование Cookie</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: #f5f5f5;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        h1 {
-            color: #333;
-        }
-        .cookie-info {
-            margin-top: 20px;
-            background: #fff;
-            padding: 15px;
-            border-radius: 5px;
-            border: 1px solid #ddd;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
-        }
-        th, td {
-            padding: 8px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-        .counter {
-            font-size: 18px;
-            font-weight: bold;
-            margin: 15px 0;
-        }
-    </style>
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-    <div class="container">
+    <nav class="navigation">
+        <div class="container">
+            <div class="nav-links">
+                <#if employee??>
+                    <a href="/profile">Мой профиль</a>
+                <#else>
+                    <a href="/login">Войти</a>
+                </#if>
+                <a href="/books">Книги</a>
+                <a href="/employees">Сотрудники</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container cookie-container">
         <h1>Тестирование Cookie</h1>
 
-        <div class="counter">
+        <div class="cookie-counter">
             Количество посещений: ${times}
         </div>
 
         <div class="cookie-info">
             <h2>Текущие Cookie:</h2>
-            <table>
+            <table class="cookie-table">
                 <thead>
                     <tr>
                         <th>Имя</th>
@@ -76,7 +48,7 @@
             </table>
         </div>
 
-        <p><a href="/">Вернуться на главную</a></p>
+        <p><a href="/" class="button">Вернуться на главную</a></p>
     </div>
 </body>
 </html>

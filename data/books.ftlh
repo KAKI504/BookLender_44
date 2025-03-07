@@ -7,18 +7,19 @@
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-    <nav class="navigation">
-        <div class="container">
-            <div class="nav-links">
-                <#if employee??>
-                    <a href="/profile">Мой профиль</a>
-                <#else>
-                    <a href="/login">Войти</a>
-                </#if>
-                <a href="/books">Книги</a>
-            </div>
-        </div>
-    </nav>
+   <nav class="navigation">
+       <div class="container">
+           <div class="nav-links">
+               <#if employee??>
+                   <a href="/profile">Мой профиль</a>
+               <#else>
+                   <a href="/login">Войти</a>
+               </#if>
+               <a href="/books">Книги</a>
+               <a href="/employees">Сотрудники</a>
+           </div>
+       </div>
+   </nav>
 
     <div class="container">
         <h1>Библиотека</h1>

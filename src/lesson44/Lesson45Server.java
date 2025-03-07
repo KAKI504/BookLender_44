@@ -11,10 +11,8 @@ public class Lesson45Server extends Lesson44Server {
         super(host, port);
 
         registerGet("/registration", this::handleRegistrationPage);
-        System.out.println("- Зарегистрирован маршрут: /registration (GET)");
 
         registerPost("/registration", this::handleRegistration);
-        System.out.println("- Зарегистрирован маршрут: /registration (POST)");
     }
 
     private void handleRegistrationPage(HttpExchange exchange) {

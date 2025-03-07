@@ -19,7 +19,6 @@ public class Lesson46Server extends Lesson45Server {
         registerGet("/cookie", this::cookieHandler);
 
         registerGet("/logout", this::handleLogout);
-        System.out.println("- Зарегистрирован маршрут: /logout");
     }
 
     private void setCookie(HttpExchange exchange, Cookie cookie) {

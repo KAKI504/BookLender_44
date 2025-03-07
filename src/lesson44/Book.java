@@ -9,6 +9,11 @@ public class Book {
     private boolean isBorrowed;
     private String borrowedBy;
 
+    private String year;
+    private String genre;
+    private Integer pageCount;
+    private String description;
+
     public Book(String id, String title, String author, String image) {
         this.id = id;
         this.title = title;
@@ -72,6 +77,38 @@ public class Book {
 
     public void setBorrowedBy(String borrowedBy) {
         this.borrowedBy = borrowedBy;
+    }
+
+    public String getYear() {
+        return year;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    public Integer getPageCount() {
+        return pageCount;
+    }
+
+    public void setPageCount(Integer pageCount) {
+        this.pageCount = pageCount;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public void borrowBook(String employeeName) {

@@ -12,6 +12,7 @@
             <div class="nav-links">
                 <a href="/login">Войти</a>
                 <a href="/books">Книги</a>
+                <a href="/employees">Сотрудники</a>
             </div>
         </div>
     </nav>
